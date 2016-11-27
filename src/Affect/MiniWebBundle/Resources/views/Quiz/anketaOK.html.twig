@@ -1,0 +1,27 @@
+{% extends 'MiniWebBundle::layout.html.twig' %}
+
+{% block section_class %}thank{% endblock %}
+
+{% block page_content %}
+
+    <div class="iqos_title">
+        спасибо
+    </div>
+    <div class="iqos_ty-text">
+        МЫ ПОЛУЧИЛИ ВАШУ АНКЕТУ<br>
+        И СВЯЖЕМСЯ С ВАМИ В БЛИЖАЙШЕЕ ВРЕМЯ
+    </div>
+    <div class="iqos_descr">
+        Обратите внимание, что количество участников ограничено
+    </div>
+    <div class="iqos_disclaimer">
+        Обратите внимание, что предоставленная вами информация не будет использоваться в коммерческих целях.<br>
+        Данный вебсайт используется в целях проведения исследования потребления табачной продукции в России и предназначен только для
+        граждан РФ старше 18 лет
+    </div>
+
+    <div class="iqos_bg-pic">
+        <img class="iqos_svg-bg2" src="{{ asset('images/bg2.png') }}" alt="" />
+    </div>
+
+{% endblock %}

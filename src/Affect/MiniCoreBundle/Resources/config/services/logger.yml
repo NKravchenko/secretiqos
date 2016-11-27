@@ -1,0 +1,37 @@
+services:
+    affect.logger.monolog_logger_factory:
+        class: Affect\Common\Log\MonologLoggerFactory
+        arguments:
+            - log_dir: %kernel.logs_dir%
+              level:   "Logger:DEBUG"
+
+    affect.logger.error:
+        class: Psr\Log\LoggerInterface
+        factory-service: @affect.logger.monolog_logger_factory
+        factory-method: create
+        arguments:
+            - "error"
+
+    affect.logger.debug:
+        class: Psr\Log\LoggerInterface
+        factory: ["@affect.logger.monolog_logger_factory", create]
+        arguments:
+            - "debug"
+
+    affect.logger.sm:
+        class: Psr\Log\LoggerInterface
+        factory: ["@affect.logger.monolog_logger_factory", create]
+        arguments:
+            - "sm"
+
+#    affect.logger.sm_debug:
+#        class: Psr\Log\LoggerInterface
+#        factory: ["@affect.logger.monolog_logger_factory", create]
+#        arguments:
+#            - "sm"
+#
+#    affect.logger.mindbox:
+#        class: Psr\Log\LoggerInterface
+#        factory: ["@affect.logger.monolog_logger_factory", create]
+#        arguments:
+#            - "mindbox"

@@ -1,0 +1,38 @@
+{% extends 'MiniWebBundle::layout.html.twig' %}
+
+{% block page_content %}
+    <style>
+        td {
+            padding: 5px
+        }
+    </style>
+
+    <div class="iqos_title">
+        Пожалуйста, ответьте на вопросы
+    </div>
+
+        <form action="{{ path('affect_mini_quiz_create') }}" method="post">
+            <ul>
+                {% for question in questions %}
+                    <li><div class="iqos_form_string">
+
+                        <h3>{{ question.text }}</h3>
+                        <ul>
+                            {% for res in question.getResponses %}
+                                <li>
+
+                                    <label><input type="radio" name="response[{{ question.id }}]" required="required"
+                                           id="response_{{ question.id }}_{{ res.id }}"
+                                           value="{{ res.id }}">{{ res.text }}</label></li>
+                            {% endfor %}
+                        </ul>
+
+                    </div>
+                    </li>
+
+                {% endfor %}
+            </ul>
+            <input type="submit">
+        </form>
+
+{% endblock %}

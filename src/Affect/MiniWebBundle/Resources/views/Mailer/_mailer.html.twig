@@ -1,0 +1,11 @@
+{% block subject %}
+    {% autoescape false %}
+    {% if subject is defined and subject %}
+        {{ subject }}
+    {% else %}
+        IQOS info.
+    {% endif %}
+    {% endautoescape %}
+{% endblock %}
+{% block body_text %}{% endblock %}
+{% block body_html %}{% endblock %}

@@ -1,0 +1,93 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        fos_userbundle:
+            id:                     fos_user.user_provider.username_email
+        in_memory:
+            memory:
+                users:
+                    admin: { password: admin, roles: 'ROLE_ADMIN' }
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        dev:
+            pattern:                ^/(_(profiler|wdt)|css|images|js)/
+            security:               false
+        admin:
+            pattern:                ^/admin
+            form_login:
+                provider:           fos_userbundle
+                csrf_provider:      form.csrf_provider
+                login_path:         fos_user_security_login
+                check_path:         fos_user_security_check
+                use_forward:        false
+                always_use_default_target_path: true
+                default_target_path: /admin/
+            logout:
+                path:               fos_user_security_logout
+                target:             fos_user_security_login
+                invalidate_session: false
+            anonymous:              true
+            switch_user:            true
+        main:
+            pattern:                ^/
+            form_login:
+                provider:           fos_userbundle
+                csrf_provider:      form.csrf_provider
+            oauth:
+                resource_owners:
+                    facebook:       facebook_login
+                    instagram:      instagram_login
+                    twitter:        twitter_login
+                login_path:          affect_mini_homepage
+                default_target_path: %default_host%/anketa
+                failure_path:        affect_mini_homepage
+                oauth_user_provider:
+                    service:        goodstarter.oauth.user_provider
+            logout:
+                path:               /logout
+#                path:               fos_user_security_logout
+                target:             affect_mini_homepage
+            anonymous:              true
+
+    role_hierarchy:
+        ROLE_SUPER_ADMIN:
+            - ROLE_AGENCY_USER
+            - ROLE_VIEW_REPORT
+            - ROLE_VIEW_NOT_MATCH_USERS
+
+        ROLE_AGENCY_USER:
+            - ROLE_ADMIN
+            - ROLE_VIEW_PR
+            - ROLE_EDIT_MATCH_CRITERIA
+            - ROLE_EDIT_STATUS
+            - ROLE_EDIT_REGISTERED_IN_PROGRAM
+            - ROLE_EDIT_TYPE_OF_SURVEY
+            - ROLE_EDIT_TYPE_OF_RECRUITMENT
+            - ROLE_VIEW_NOT_MATCH_USERS
+
+        ROLE_SE_USER:
+            - ROLE_ADMIN
+            - ROLE_EDIT_REGISTERED_IN_PROGRAM
+            - ROLE_EDIT_TYPE_OF_SURVEY
+
+        ROLE_PM_USER:
+            - ROLE_ADMIN
+            - ROLE_VIEW_PR
+            - ROLE_GENERATE_REPORT
+            - ROLE_VIEW_REPORT
+            - ROLE_VIEW_NOT_MATCH_USERS
+
+    access_control:
+        - { path: ^/admin/login$|^/mp$|^/rsvp$|^/M9LFKF56FA$|^/R7HSHJ825Y$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/anketa$, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }

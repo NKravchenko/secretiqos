@@ -1,0 +1,68 @@
+las_user:
+    resource:   "@MiniWebBundle/Resources/config/routing/las_user.yml"
+    prefix:     /
+
+user_security:
+    resource:    routing/admin.yml
+    prefix:      /admin
+
+hwi_oauth_redirect:
+    resource:    @HWIOAuthBundle/Resources/config/routing/redirect.xml
+    prefix:      /connect
+
+facebook_login:
+    path:          /login/check-facebook
+
+twitter_login:
+    path:          /login/check-twitter
+
+instagram_login:
+    path:          /login/check-instagram
+
+#----- MAIN -----
+affect_mini_homepage:
+    path:     /
+    defaults: { _controller: MiniWebBundle:Main:index }
+    methods:  [GET]
+
+#off
+#affect_mini_quiz:
+#    path:     /quiz
+#    defaults: { _controller: MiniWebBundle:Quiz:index }
+#    methods:  [GET]
+#
+#affect_mini_quiz_create:
+#    path:     /quiz
+#    defaults: { _controller: MiniWebBundle:Quiz:create }
+#    methods:  [POST]
+
+affect_mini_quiz_anketa:
+    path:     /anketa
+    defaults: { _controller: MiniWebBundle:Quiz:anketaNew }
+    methods:  [GET]
+
+affect_mini_quiz_anketa_create:
+    path:     /anketa
+    defaults: { _controller: MiniWebBundle:Quiz:anketaCreate }
+    methods:  [POST]
+
+#test
+#affect_mini_quiz_anketa_sm:
+#    path:     /step3
+#    defaults: { _controller: MiniWebBundle:Quiz:smIndex }
+#    methods:  [GET]
+
+affect_mini_sm_add:
+    path:     /addsm/{sm}
+    defaults: { _controller: MiniWebBundle:Sm:smAdd }
+    methods:  [GET]
+
+affect_mini_sm_login:
+    path:     /smlogin/{smId}
+    defaults: { _controller: MiniWebBundle:Sm:smLogin }
+
+#/mp, /rsvp, /M9LFKF56FA, /R7HSHJ825Y
+affect_mini_refer_link:
+    path:     /{refId}
+    defaults: { _controller: MiniWebBundle:Main:referal }
+    methods:  [GET]

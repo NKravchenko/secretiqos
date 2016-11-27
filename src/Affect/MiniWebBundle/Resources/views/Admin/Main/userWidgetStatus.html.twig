@@ -1,0 +1,40 @@
+{% set enumList = viewEnumReadableMap('StatusType') %}
+{% set btnClass = 'btn-default' %}
+{% if enumList[user.status] is defined %}
+    {% set btnTitle = enumList[user.status] %}
+{% else %}
+    {% set btnClass = 'btn-danger' %}
+    {% set btnTitle = ' - ' %}
+{% endif %}
+
+{% if is_granted('ROLE_EDIT_STATUS') %}
+    <div class="btn-group">
+
+        <button class="btn {{ btnClass }}">{{ btnTitle }}</button>
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+
+        <ul class="dropdown-menu">
+            {% if user.matchCriteria == constant('Affect\\MiniCoreBundle\\Enum\\CriteriaMatchType::NO') %}
+                <li><a href="#" class="js-user-change-param"
+                       data-item-id="{{ user.id }}"
+                       data-item-status="{{ constant('Affect\\MiniCoreBundle\\Enum\\StatusType::NO') }}"
+                       data-item-type="status"
+                       data-target="{{ path('mini_admin_user_param_change') }}"
+                            > {{ enumList[constant('Affect\\MiniCoreBundle\\Enum\\StatusType::NO')] }} </a></li>
+            {% else %}
+                {% for listItemId,listItem in enumList %}
+                    {% if listItemId != constant('Affect\\MiniCoreBundle\\Enum\\StatusType::NO') %}
+                        <li><a href="#" class="js-user-change-param"
+                               data-item-id="{{ user.id }}"
+                               data-item-status="{{ listItemId }}"
+                               data-item-type="status"
+                               data-target="{{ path('mini_admin_user_param_change') }}"
+                                    >{{ listItem }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+{% else %}
+    {{ btnTitle }}
+{% endif %}

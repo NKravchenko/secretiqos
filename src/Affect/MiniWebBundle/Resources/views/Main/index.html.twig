@@ -1,0 +1,54 @@
+{% extends 'MiniWebBundle::layout.html.twig' %}
+
+{% block page_content %}
+    <div class="iqos_title">
+        Вы получили секретную ссылку для регистрации в закрытом проекте.
+        Количество участников ограничено
+    </div>
+    <div class="iqos_descr">
+        Для участия необходимо пройти авторизацию в одной из социальных сетей:
+    </div>
+    <ul class="iqos_soc-list">
+        <li>
+            <a href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook'}) }}">
+                <img class="iqos_fb-ico" src="{{ asset('images/facebook-01.svg') }}" alt="" />
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('hwi_oauth_service_redirect', {'service': 'instagram'}) }}">
+                <img class="iqos_inst-ico" src="{{ asset('images/insta-01.svg') }}" alt="" />
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('hwi_oauth_service_redirect', {'service': 'twitter'}) }}">
+                <img class="iqos_tw-ico" src="{{ asset('images/twitter-01.svg') }}" alt="" />
+            </a>
+        </li>
+    </ul>
+    <div class="iqos_info">
+        {% if ref == 'MP' %}
+            <div class="iqos_info_email">
+                <a href="mailto:iqos@m-p.ru">iqos@m-p.ru</a>
+            </div>
+            <div class="iqos_info_phone">
+                <nobr>+7 495 710 7068</nobr>
+            </div>
+        {% else %}
+            <div class="iqos_info_email">
+                <a href="mailto:iqos@rsvp-agency.com">iqos@rsvp-agency.com</a>
+            </div>
+            <div class="iqos_info_phone">
+                <nobr>+7 985 998 3199</nobr>
+            </div>
+        {% endif %}
+    </div>
+    <div class="iqos_disclaimer">
+        Обратите внимание, что предоставленная вами информация не будет использоваться в коммерческих целях.<br>
+        Данный вебсайт используется в целях проведения исследования потребления табачной продукции в России и предназначен только для
+        граждан
+        РФ старше 18 лет
+    </div>
+    <div class="iqos_bg-pic iqos_bg-pic3">
+        <img src="{{ asset('images/bg3.png') }}" alt="">
+    </div>
+{% endblock %}

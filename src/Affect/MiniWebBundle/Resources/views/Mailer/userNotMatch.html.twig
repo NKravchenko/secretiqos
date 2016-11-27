@@ -1,0 +1,55 @@
+{% extends "MiniWebBundle:Mailer:_mailer.html.twig" %}
+
+{% block subject %}
+iQOS Secret
+{% endblock %}
+
+{% block body_text %}
+    ДОБРЫЙ ДЕНЬ, {{ user.firstName }},
+    ВАШ ИНТЕРЕС К ЭКСКЛЮЗИВУ
+    И ИННОВАЦИЯМ БЕСЦЕНЕН.
+    Приносим свои извинения, но в данный момент регистрация в закрытом проекте невозможна.
+    Впереди время больших изменений, следите за новостями.
+
+    Желаем вам больше открытий и приятных изменений.
+
+    Команда iQOS.
+    www.iQOS.ru
+    8-800-301-47-67
+{% endblock %}
+
+{% block body_html %}
+    <meta charset="utf-8">
+    <div align="center" class="wrapper" style="width:100%;background-color:#f4f4f4;table-layout:fixed;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;" >
+        <!--[if (gte mso 9)|(IE)]>
+        <table align="center" width="600" cellpadding="0" cellspacing="0" style="border-collapse:collapse;" ><tr><td>
+        <![endif]-->
+        <table class="newsletter" align="center" width="100%" cellpadding="30" cellspacing="0" style="margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;max-width:600px;" >
+        <tr>
+            <td class="content" style="width:600px !important;background-color:#ffffff;padding-top:50px;padding-bottom:50px;padding-right:50px;padding-left:50px;" >
+                <div class="h1" style="font-family:Verdana, Geneva, sans-serif;font-size:34px;color:#9c7444;line-height:1.2em;padding-bottom:18px;" >ДОБРЫЙ ДЕНЬ, {{ user.firstName }}</div>
+                <div class="h2" style="font-family:Verdana, Geneva, sans-serif;font-size:22px;color:#9c7444;line-height:1.3em;padding-bottom:40px;" >ВАШ ИНТЕРЕС К ЭКЗКЛЮЗИВУ<br />И ИННОВАЦИЯМ БЕСЦЕНЕН.</div>
+                <p style="margin-top:1em;margin-bottom:1em;margin-right:0;margin-left:0;font-family:Verdana, Geneva, sans-serif;font-size:17px;color:#000000;line-height:1.3em;text-align:left;" >
+                    Приносим свои извинения, но в данный момент регистрация в закрытом проекте невозможна.<br />
+                    Впереди время больших изменений, следите за новостями.
+                </p>
+
+                <p style="margin-top:1em;margin-bottom:1em;margin-right:0;margin-left:0;font-family:Verdana, Geneva, sans-serif;font-size:17px;color:#000000;line-height:1.3em;text-align:left;" >
+                    Желаем вам больше открытий и приятных изменений.
+                </p>
+
+                {#<p style="margin-top:1em;margin-bottom:1em;margin-right:0;margin-left:0;font-family:Verdana, Geneva, sans-serif;font-size:17px;color:#000000;line-height:1.3em;text-align:left;" >#}
+                {#Узнать больше об iQOS и разместить заказ вы можете по ссылке <a href="http://www.iqos.ru/iqos/iqos" style="font-family:Verdana, Geneva, sans-serif;color:#9c7444 !important;text-decoration:underline;"><span style="color:#9c7444;" >www.iQOS.ru/iqos/iqos</span></a><br />#}
+                {#Предложение действительно с 01 по 30 ноября.<br />#}
+                {#</p>#}
+
+                <p style="margin-top:1em;margin-bottom:1em;margin-right:0;margin-left:0;font-family:Verdana, Geneva, sans-serif;font-size:17px;color:#000000;line-height:1.3em;text-align:left;" >
+                    <span class="colored" style="color:#9c7444;" >Команда iQOS</span><br />
+                    {#<a href="http://www.iqos.ru" target="_blank" style="font-family:Verdana, Geneva, sans-serif;color:#9c7444 !important;text-decoration:underline;" ><span style="color:#9c7444;" >www.iQOS.ru</span></a><br />#}
+                    <span class="colored" style="color:#9c7444;" >8-800-301-47-67</span>
+                </p>
+            </td>
+        </tr>
+        </table>
+        <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+    </div>{% endblock %}

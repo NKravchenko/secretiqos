@@ -1,0 +1,25 @@
+<ul class="iqos_soc-list">
+    <li>
+        {% if "" == user.facebookId  %}
+            <img class="js-smadd iqos_fb-ico" src="{{ asset('images/facebook-01.svg') }}" alt="" data-target="{{ path('affect_mini_sm_add', {sm:'fb'}) }}" />
+
+        {% else %}
+            <img class="iqos_fb-ico done" src="{{ asset('images/facebook-01.svg') }}" alt="" />
+        {% endif %}
+    </li>
+    <li>
+        {% if "" == user.instagramId  %}
+            <img class="js-smadd iqos_fb-ico" src="{{ asset('images/insta-01.svg') }}" alt="" data-target="{{ path('affect_mini_sm_add', {sm:'ig'}) }}" />
+
+        {% else %}
+            <img class="iqos_fb-ico done" src="{{ asset('images/insta-01.svg') }}" alt="" />
+        {% endif %}
+    </li>
+    <li>
+        {% if "" == user.twitterId  %}
+            <img class="js-smadd iqos_fb-ico" src="{{ asset('images/twitter-01.svg') }}" alt="" data-target="{{ path('affect_mini_sm_add', {sm:'tw'}) }}" />
+        {% else %}
+            <img class="iqos_fb-ico done" src="{{ asset('images/twitter-01.svg') }}" alt="" />
+        {% endif %}
+    </li>
+</ul>

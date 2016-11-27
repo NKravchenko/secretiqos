@@ -1,0 +1,16 @@
+#authtorization
+las_user_security_login:
+    path:  /login
+    defaults: { _controller: 'MiniWebBundle:LasSecurity:login' }
+    methods:  [GET]
+
+#las_user_security_check:
+#    path:  /user_login_check
+#    defaults: { _controller: 'MarlboroUserBundle:LasSecurity:userCheck' }
+#    methods:  [POST]
+
+las_user_security_logout:
+    path:  /logout
+    defaults: { _controller: 'MiniWebBundle:LasSecurity:logout' }
+    methods:  [GET]
+

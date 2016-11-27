@@ -1,0 +1,20 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: smf2_secretiqos
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: smtpcorp.com
+    mailer_user: secret@iqos.ru
+    mailer_password: 1234567890
+    mailer_user_name: iqos
+    secret: 9e40aa68435365a1c2d1446ced8157b2e4540395
+    facebook_id: '898145743594233'
+    facebook_secret: f018ee203d48069b54cab4044774e65b
+    twitter_id: 6YQ8SlK6NgP7Jd8d3pShE81yG
+    twitter_secret: cMY136XjReltUvoKKkQlK31gwwLwZl3cAnty6QQy7VULSDtNt4
+    instagram_id: 98385716d79243af992dd1402fcb204e
+    instagram_secret: 9d9f2fc0550149668a55bccff043435f
+    default_host: 'http://secret.kram-dev.ru'

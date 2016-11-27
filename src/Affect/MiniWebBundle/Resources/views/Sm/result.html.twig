@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var parent_window = window.opener;
+
+        function showResult() {
+            if (parent_window && !parent_window.closed) {
+                parent_window.smResult( {% if true == result %}true{% else %}false{% endif %}, "{{ resultHtml|escape('js') }}");
+            }
+        }
+
+        showResult();
+        window.close();
+    </script>
+</head>
+<body>
+
+{% if true == result %}
+    <h2>Спасибо, профиль соцсети присоединен</h2>
+{% else %}
+    <h2>К сожалению, не удалось присоеденить профиль соцсети.</h2>
+{% endif %}
+<div>Это окно можно закрыть.</div>
+</body>
+</html>

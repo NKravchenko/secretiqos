@@ -1,0 +1,53 @@
+services:
+
+    affect.service.facebook:
+        class: Affect\MiniCoreBundle\Sm\Service\FacebookService
+
+#    affect.service.twitter:
+#        class: Affect\MiniCoreBundle\Sm\Service\TwitterService
+
+    affect.service.instagram:
+        class: Affect\MiniCoreBundle\Sm\Service\InstagramService
+
+#    affect.service.bloger:
+#        class: Affect\MiniCoreBundle\Sm\Service\BlogerService
+
+    affect.sm.adapter_factory:
+        class: Affect\MiniCoreBundle\Sm\Adapter\AdapterFactory
+        arguments:
+          - fb: @affect.sm.facebook_adapter
+            ig: @affect.sm.instagram_adapter
+            tw: @affect.sm.twitter_adapter
+
+    affect.sm.facebook_adapter:
+        class: Affect\MiniCoreBundle\Sm\Adapter\FacebookAdapter
+        arguments:
+          - @facebook.curl_http_client
+          - %facebook_id%
+          - %facebook_secret%
+          - @affect.logger.sm
+
+    affect.sm.twitter_adapter:
+        class: Affect\MiniCoreBundle\Sm\Adapter\TwitterAdapter
+        arguments:
+          - @twitter.client
+          - @session
+          - %twitter_id%
+          - %twitter_secret%
+          - @affect.logger.sm
+
+    affect.sm.instagram_adapter:
+        class: Affect\MiniCoreBundle\Sm\Adapter\InstagramAdapter
+        arguments:
+          - %instagram_id%
+          - %instagram_secret%
+          - @affect.logger.sm
+
+    facebook.curl_http_client:
+        class: Facebook\HttpClients\FacebookCurlHttpClient
+
+    twitter.client:
+        class: Abraham\TwitterOAuth\TwitterOAuth
+        arguments:
+          - %twitter_id%
+          - %twitter_secret%

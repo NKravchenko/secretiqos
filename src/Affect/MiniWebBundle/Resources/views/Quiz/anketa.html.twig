@@ -1,0 +1,138 @@
+{% extends 'MiniWebBundle::layout.html.twig' %}
+
+{% block section_class %}account{% endblock %}
+
+{% block page_content %}
+  			<div class="iqos_title">
+  				Пожалуйста, заполните анкету
+  			</div>
+    <form action="{{ path('affect_mini_quiz_anketa_create') }}" method="post">
+        {{ form_errors(form) }}
+        {{ form_widget(form._token) }}
+
+        {{ form_row(form.id) }}
+        <div class="iqos_form_string iqos_first-str">
+            {{ form_row(form.referrerFirstName) }}
+            <div class="error-box"></div>
+        </div>
+        <div class="iqos_form_string">
+            {{ form_row(form.firstName) }}
+            <div class="error-box"></div>
+        </div>
+        <div class="iqos_form_string">
+            {{ form_row(form.surnameName) }}
+            <div class="error-box"></div>
+        </div>
+        <div class="iqos_form_string">
+            {{ form_row(form.mobile) }}
+            <div class="error-box"></div>
+        </div>
+        <div class="iqos_form_string">
+            {{ form_row(form.email) }}
+            <div class="error-box"></div>
+        </div>
+        <div class="iqos_form_string iqos_form_string-social">
+            <label class="iqos_form_label_adaptive">Присоединить профиль</label>
+
+            <div class="iqos_inner-social" id="js-smcontainer">
+                {% include('MiniWebBundle:Sm:smList.html.twig') %}
+            </div>
+        </div>
+  			{#<form action="" method="post">#}
+  				{#<input type="hidden" id="User__token" name="User[_token]" value="LMHMp1HSwVaDomSITLeklUrpjHIPIwJpUGyGQMALM50">#}
+  				{#<input type="hidden" id="User_id" name="User[id]" required="required" class="iqos_input">#}
+  				{#<div class="iqos_form_string iqos_first-str">#}
+  					{#<div>#}
+  						{#<label for="User_referrerFirstName">Кто вас рекомендовал в проект?</label>#}
+  						{#<input type="text" id="User_referrerFirstName" name="User[referrerFirstName]" class="iqos_input" placeholder="Кто вас рекомендовал">#}
+  					{#</div>#}
+  					{#<div class="error-box"></div>#}
+  				{#</div>#}
+  				{#<div class="iqos_form_string">#}
+  					{#<div>#}
+  						{#<label for="User_firstName">Ваше имя</label>#}
+  						{#<input type="text" id="User_firstName" name="User[firstName]" class="iqos_input" placeholder="Имя">#}
+  					{#</div>#}
+  					{#<div class="error-box"></div>#}
+  				{#</div>#}
+  				{#<div class="iqos_form_string">#}
+  					{#<div>#}
+  						{#<label for="User_surnameName">Ваша фамилия</label>#}
+  						{#<input type="text" id="User_surnameName" name="User[surnameName]" class="iqos_input" placeholder="Фамилия">#}
+  					{#</div>#}
+  					{#<div class="error-box"></div>#}
+  				{#</div>#}
+  				{#<div class="iqos_form_string">#}
+  					{#<div>#}
+  						{#<label for="User_mobile">Ваш номер телефона</label>#}
+  						{#<input type="text" id="User_mobile" name="User[mobile]" class="iqos_input js-phone-mask" placeholder="+ 7 (___) ___-____">#}
+  					{#</div>#}
+  					{#<div class="error-box"></div>#}
+  				{#</div>#}
+  				{#<div class="iqos_form_string">#}
+  					{#<div>#}
+  						{#<label for="User_email">Ваш E-mail</label>#}
+  						{#<input type="email" id="User_email" name="User[email]" class="iqos_input" placeholder="example@domain.com">#}
+  					{#</div>#}
+  					{#<div class="error-box"></div>#}
+  				{#</div>#}
+  				{#<div class="iqos_form_string iqos_form_string-social">#}
+  					{#<label>Присоединить профиль</label>#}
+  					{#<div class="iqos_inner-social" id="js-smcontainer">#}
+  						{#<ul class="iqos_soc-list">#}
+  							{#<li>#}
+  								{#<img class="js-smadd iqos_fb-ico" src="images/facebook-01.svg" alt="" data-target="/addsm/fb">#}
+  							{#</li>#}
+  							{#<li>#}
+  								{#<img class="js-smadd iqos_fb-ico" src="images/insta-01.svg" alt="" data-target="/addsm/ig">#}
+  							{#</li>#}
+  							{#<li>#}
+  								{#<img class="iqos_fb-ico" src="images/twitter-01.svg" alt="">#}
+  							{#</li>#}
+  						{#</ul>#}
+  					{#</div>#}
+  				{#</div>#}
+  				<div class="iqos_form_checkbox-string">
+  					<input type="checkbox" class="iqos_checkbox" id="iqos_rules-confirm" required="required">
+  					<label for="iqos_rules-confirm">Я согласен с </label>
+  					<span class="js-popup-link iqos_rules-popup">условиями</span>
+  					<div class="registration_error-box"></div>
+  				</div>
+  				<div class="iqos_form_submit-string">
+  					<button class="js-reg-btn iqos_btn" type="submit" disabled="disabled">Отправить</button>
+  				</div>
+  			</form>
+  			<div class="iqos_disclaimer">
+  				Обратите внимание, что предоставленная вами информация не будет использоваться в коммерческих целях.<br>
+  				Данный вебсайт используется в целях проведения исследования потребления табачной продукции в России и предназначен только для
+  				граждан РФ старше 18 лет
+  			</div>
+  			<div class="js-popup popup">
+  				<p>
+  				Я подтверждаю, что я старше 18 лет, употребляю табачные изделия, являюсь гражданином России, и предоставляю обществу с
+  				ограниченной ответственностью «Филип Моррис Сэйлз энд Маркетинг» (127051, Российская Федерация, Москва, Цветной
+  				бульвар, д. 2) (далее ООО «ФМСМ») и его филиалам, аффилированным лицам и уполномоченным ими лицам, действующим в
+  				соответствии с соглашениями о конфиденциальности, право осуществлять автоматизированную
+  				и неавтоматизированную обработку, включая сбор, систематизацию, накопление, хранение, уточнение (обновление, изменение),
+  				использование, распространение (в том числе передачу, включая трансграничную передачу), обезличивание, блокирование, уничтожение
+  				предоставленных мной моих персональных данных (ПДн), для целей осуществления любым из вышеуказанных лиц и(или) их
+  				уполномоченными представителями любых контактов со мной в отношении любых мероприятий, предоставления информации и материалов,
+  				относящихся к табакосодержащим изделиям и различным вопросам, связанным с табакосодержащими изделиями, приглашений на сайты
+  				ООО «ФМСМ» и его аффилированных лиц, иной информации посредством электронной связи или иным способом (включая почту,
+  				электронную почту, SMS, MMS), а также для целей маркетинговых исследований и анализа, разработки любых программ, включая
+  				программы производства, создания баз данных, соблюдения требований законодательства Российской Федерации. Я разрешаю ООО «ФМСМ»,
+  				его филиалам, аффилированным лицам и уполномоченным ими лицам направлять мне на указанные мною адрес, адрес электронной почты и
+  				номера телефонов информацию о предстоящих событиях, мероприятиях и услугах, а также актуальную и достоверную информацию о
+  				табакосодержащих изделиях и пунктах продаж в соответствии с российским законодательством о защите прав потребителей. Я обязуюсь
+  				незамедлительно информировать ФМСМ об изменении моих персональных данных и(или) изменении статуса потребителя табака. Настоящее
+  				согласие действует до даты его отзыва мною путем направления по почте в адрес ООО «ФМСМ» письменного уведомления.
+  				</p>
+
+  				<div class="js-popup-close popup_close">Закрыть</div>
+  			</div>
+
+  			<div class="iqos_bg-pic">
+  				<img class="iqos_svg-bg1" src="{{ asset('images/bg1.svg') }}" alt="">
+  			</div>
+
+{% endblock %}

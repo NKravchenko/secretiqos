@@ -1,0 +1,6 @@
+services:
+    affect.service.mailer:
+        class: Affect\Common\Mailer\TwigSwiftMailer
+        arguments:
+            - @mailer
+            - @twig

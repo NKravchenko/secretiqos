@@ -1,0 +1,33 @@
+{% set refList = viewEnumReadableMap('AgencyType') %}
+{#{% if refList[user.reffered] is defined %}#}
+    {#<td>{{ refList[user.reffered] }}</td>#}
+{#{% else %}#}
+    {#<td> - </td>#}
+{#{% endif %}#}
+<td><nobr>{{ user.createdAt|date('Y-m-d') }}</nobr></td>
+<td>{{ user.firstName }}</td>
+<td>{{ user.surnameName }}</td>
+<td>{{ user.referrerFirstName }}</td>
+<td>
+    <ul>
+        {% for sm,smProfile in user.getSocialprofiles() %}
+            <li><a href="{{ viewSmProfileUrl(sm, smProfile) }}" target="_blank" title="{{ smProfile }}">{{ sm }}</a></li>
+        {% endfor %}
+    </ul>
+</td>
+{# ответы опросника #}
+{#{% if user.responses|length > 0 %}#}
+    {#{% for response in user.responses %}#}
+        {#<td>{{ response.text }}</td>#}
+    {#{% endfor %}#}
+{#{% else %}#}
+    {#<td> -</td>#}
+    {#<td> -</td>#}
+{#{% endif %}#}
+<td>{{ user.mobile }}</td>
+<td>{{ user.email }}</td>
+<td style="width: 120px;">{% include "MiniWebBundle:Admin/Main:userWidgetCriteriaMatch.html.twig" %}</td>
+<td style="width: 170px;">{% include "MiniWebBundle:Admin/Main:userWidgetStatus.html.twig" %}</td>
+<td style="width: 150px;">{% include "MiniWebBundle:Admin/Main:userWidgetTypeOfRecruitment.html.twig" %}</td>
+<td style="width: 100px;">{% include "MiniWebBundle:Admin/Main:userWidgetRegisteredInProgram.html.twig" %}</td>
+<td style="width: 150px;">{% include "MiniWebBundle:Admin/Main:userWidgetTypeOfSurvey.html.twig" %}</td>

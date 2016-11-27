@@ -1,0 +1,116 @@
+{% include 'MiniWebBundle:Admin:head.html.twig' %}
+{% set _controller = app.request.attributes.get('_controller') %}
+
+<body class="overflow-hidden">
+<!-- Overlay Div -->
+<div id="overlay" class="transparent"></div>
+
+<!--Modal-->
+<div class="modal fade" id="modal-container">
+    <div class="modal-dialog">
+        <div class="modal-content" id="overlay_content">
+<!-- loadable content -->
+        </div> <!-- /.modal-content -->
+    </div> <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!--Modal-->
+<div class="modal fade" id="modal-image-view">
+    <div class="modal-dialog">
+        <div class="modal-content" id="overlay_content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Фотография</h4>
+            </div>
+            <div class="modal-body">
+                <img src="" id="modal-image-view-src">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-danger" data-dismiss="modal" aria-hidden="true">Закрыть</button>
+            </div>
+        </div> <!-- /.modal-content -->
+    </div> <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- Logout confirmation -->
+<div class="custom-popup width-80" id="logoutConfirm">
+    <div class="padding-md">
+        <h4 class="m-top-none">Вы уверены что хотите выйти?</h4>
+    </div>
+
+    <div class="text-center">
+        <a class="btn btn-success m-right-sm" href="{{ path('fos_user_security_logout') }}">Выход</a>
+        <a class="btn btn-danger logoutConfirm_close">Отмена</a>
+    </div>
+</div>
+
+<div id="wrapper" class="sidebar-mini">
+    {% include 'MiniWebBundle:Admin:topnav.html.twig' %}
+
+    <aside class="fixed skin-6">
+        {% include 'MiniWebBundle:Admin:sidebar.html.twig' %}
+    </aside>
+
+    <div id="main-container">
+        {% block container %}{% endblock %}
+    </div>
+    <!-- /main-container -->
+</div>
+
+<!-- /wrapper -->
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<!-- Jquery -->
+<script src="{{ asset('admin/js/jquery-1.10.2.min.js') }}"></script>
+
+<!-- custom -->
+{#<script src="{{ asset('js/backend.core.js') }}"></script>#}
+
+
+<!-- Bootstrap -->
+<script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
+
+<!-- Flot -->
+{#<script src="{{ asset('js/jquery.flot.min.js') }}"></script>#}
+
+<!-- Morris -->
+{#<script src="{{ asset('js/rapheal.min.js') }}"></script>#}
+{#<script src="{{ asset('js/morris.min.js') }}"></script>#}
+
+<!-- Colorbox -->
+{#<script src="{{ asset('js/jquery.colorbox.min.js') }}"></script>#}
+
+<!-- Sparkline -->
+{#<script src="{{ asset('js/jquery.sparkline.min.js') }}"></script>#}
+
+<!-- Pace -->
+<script src="{{ asset('admin/js/pace.min.js') }}"></script>
+
+<!-- Popup Overlay -->
+<script src="{{ asset('admin/js/jquery.popupoverlay.min.js') }}"></script>
+
+{#<!-- Slimscroll -->#}
+<script src="{{ asset('admin/js/jquery.slimscroll.min.js') }}"></script>
+
+{#<!-- Modernizr -->#}
+<script src="{{ asset('admin/js/modernizr.min.js') }}"></script>
+
+<!-- Cookie -->
+<script src="{{ asset('admin/js/jquery.cookie.min.js') }}"></script>
+
+<!-- Gritter -->
+<script src="{{ asset('admin/js/jquery.gritter.min.js') }}"></script>
+
+<script src="{{ asset('admin/js/admin-common.js') }}"></script>
+<!-- Endless -->
+{#<script src="{{ asset('js/endless/endless_dashboard.js') }}"></script>#}
+<script src="{{ asset('admin/js/endless/endless.js') }}"></script>
+
+
+</body>
+

@@ -1,0 +1,30 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: miniwp
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: kram@affect.ru
+    mailer_password: null
+    mailer_user_name: iqos
+    secret: 9e40aa68435365a1c2d1446ced8157b2e4540395
+
+    facebook_id: 898145743594233
+    facebook_secret: f018ee203d48069b54cab4044774e65b
+
+    twitter_id: 6YQ8SlK6NgP7Jd8d3pShE81yG
+    twitter_secret: cMY136XjReltUvoKKkQlK31gwwLwZl3cAnty6QQy7VULSDtNt4
+
+#-publica    vkontakte_id: 4325714
+#-publica    vkontakte_secret: 6njJWsKVakNk9amDo94p
+#    vkontakte_id: 4584095
+#    vkontakte_secret: BLgv4wOBSoKtE9bMQvwK
+    instagram_id:     98385716d79243af992dd1402fcb204e
+    instagram_secret: 9d9f2fc0550149668a55bccff043435f
+
+    default_host: http://miniwp.vm-dev24

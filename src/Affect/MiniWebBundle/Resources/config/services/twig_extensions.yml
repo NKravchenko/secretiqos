@@ -1,0 +1,7 @@
+services:
+    affect.twig.common_view_helper:
+        class: Affect\MiniWebBundle\View\Extension\CommonViewHelperExtension
+        arguments:
+            - @request_stack
+        tags:
+            - { name: twig.extension }

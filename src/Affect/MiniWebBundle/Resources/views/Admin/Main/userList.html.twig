@@ -1,0 +1,43 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            {#{% if is_granted('ROLE_VIEW_REPORT') %}#}
+                <a href="{{ path("mini_admin_user_report") }}"
+                   class="pull-right btn btn-default btn-xs"><i class="fa fa-download"></i>&nbsp; отчет</a>
+            {#{% endif %}#}
+        </h4>
+    </div>
+    {#<div id="faqBasic" class="panel-collapse collapse" style="height: 0px;">#}
+        <div class="panel-body">
+            <table class="table table-bordered table-condensed table-hover table-striped" id="dataTable">
+                <thead>
+                <tr>
+                    {#<th width="50">Comes from</th>#}
+                    <th>Reg. time</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Referred by</th>
+                    <th>Account used for log in</th>
+                    {#<th>Question 1</th>#}
+                    {#<th>Question 2</th>#}
+                    <th>Phone</th>
+                    <th>E-mail</th>
+                    <th>Match criteria</th>
+                    <th>Status</th>
+                    <th>Type of Recruitment</th>
+                    <th>Registered in program</th>
+                    <th>Type of Survey</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    {#{% set attachments = getUserEventAttachments(userEvent) %}#}
+                    <tr id="directory-item-{{ user.id }}">
+                        {% include "MiniWebBundle:Admin/Main:userItem.html.twig" %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {#</div>#}
+</div>

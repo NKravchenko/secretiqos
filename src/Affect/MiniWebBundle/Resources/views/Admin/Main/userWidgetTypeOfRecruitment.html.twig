@@ -1,0 +1,29 @@
+{% set enumList = viewEnumReadableMap('TypeOfRecruitmentType') %}
+{% set btnClass = 'btn-default' %}
+{% if enumList[user.typeOfRecruitment] is defined %}
+    {% set btnTitle = enumList[user.typeOfRecruitment] %}
+{% else %}
+    {% set btnClass = 'btn-danger' %}
+    {% set btnTitle = ' - ' %}
+{% endif %}
+
+{% if is_granted('ROLE_EDIT_TYPE_OF_RECRUITMENT') and ( user.status != constant('Affect\\MiniCoreBundle\\Enum\\StatusType::VIP') )%}
+    <div class="btn-group">
+
+        <button class="btn {{ btnClass }}">{{ btnTitle }}</button>
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+
+        <ul class="dropdown-menu">
+            {% for listItemId,listItem in enumList %}
+                <li><a href="#" class="js-user-change-param"
+                       data-item-id="{{ user.id }}"
+                       data-item-status="{{ listItemId }}"
+                       data-item-type="typeOfRecruitment"
+                       data-target="{{ path('mini_admin_user_param_change') }}"
+                            >{{ listItem }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% else %}
+    {{ btnTitle }}
+{% endif %}

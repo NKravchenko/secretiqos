@@ -1,0 +1,10 @@
+imports:
+    - { resource: services/logger.yml }
+    - { resource: services/mailer.yml }
+    - { resource: services/oauth.yml }
+    - { resource: services/socialMedia.yml }
+
+services:
+    miniwp.excel.export:
+        class: Affect\MiniCoreBundle\Services\ExportService
+
